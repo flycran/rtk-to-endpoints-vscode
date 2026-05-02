@@ -2,7 +2,7 @@
   "name": "rtk-to-endpoints-vscode",
   "displayName": "RTK to Endpoints",
   "description": "Go to Definition from RTK Query hooks directly to endpoint definitions, without any tsconfig or TypeScript version setup.",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "publisher": "flycran",
   "license": "MIT",
   "icon": "assets/icon.png",
@@ -51,7 +51,7 @@
     "publish": "vsce publish"
   },
   "dependencies": {
-    "rtk-to-endpoints": "1.0.2"
+    "rtk-to-endpoints": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

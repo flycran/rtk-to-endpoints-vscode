@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [ update-rtk-to-endpoints ]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest

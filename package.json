@@ -1,0 +1,62 @@
+{
+  "name": "rtk-to-endpoints-vscode",
+  "displayName": "RTK to Endpoints",
+  "description": "Go to Definition from RTK Query hooks directly to endpoint definitions, without any tsconfig or TypeScript version setup.",
+  "version": "0.1.0",
+  "publisher": "flycran",
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flycran/rtk-to-endpoints"
+  },
+  "bugs": {
+    "url": "https://github.com/flycran/rtk-to-endpoints/issues"
+  },
+  "homepage": "https://github.com/flycran/rtk-to-endpoints#readme",
+  "keywords": [
+    "rtk-query",
+    "redux-toolkit",
+    "typescript",
+    "go-to-definition",
+    "endpoints"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "typescriptServerPlugins": [
+      {
+        "name": "rtk-to-endpoints",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "rtk-to-endpoints": "1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.4.0"
+  }
+}

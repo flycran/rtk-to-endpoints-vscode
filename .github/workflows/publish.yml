@@ -21,13 +21,24 @@ jobs:
       - name: Build
         run: npm run compile
 
-      - name: Sync version from rtk-to-endpoints
-        run: |
-          RTK_VERSION=$(node -p "require('./node_modules/rtk-to-endpoints/package.json').version")
-          echo "Syncing version to $RTK_VERSION"
-          npm version $RTK_VERSION --no-git-tag-version --allow-same-version
+      - name: Create GitHub Release
+        id: get_version
+        run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Publish to VS Code Marketplace
-        run: npx vsce publish
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.get_version.outputs.VERSION }}
+          name: v${{ steps.get_version.outputs.VERSION }}
+          generate_release_notes: true
+          files: "*.vsix"
+
+      - name: Publish to Open VSX Registry
+        run: npx ovsx publish
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+
+      # - name: Publish to VS Code Marketplace
+      #   run: npx vsce publish
+      #   env:
+      #     VSCE_PAT: ${{ secrets.VSCE_PAT }}

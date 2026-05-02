@@ -8,3 +8,5 @@ src/**
 !out/**
 node_modules/**
 !node_modules/rtk-to-endpoints/**
+.github/
+tsconfig.json
